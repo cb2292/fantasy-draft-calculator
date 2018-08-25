@@ -22,8 +22,7 @@ p, li, h6 {
 body {
 	background-image: url(fb-field.jpg);
 	background-position: center top;
-	background-repeat:repeat-y;
-	background-size: cover;
+	background-size: 100% auto;
 	background-color:#F0F0F0;
 	margin:0;
 }
