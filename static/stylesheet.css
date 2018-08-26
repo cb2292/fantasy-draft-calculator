@@ -49,11 +49,16 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+		margin-left: -1px;
 }
 
 /* Menu */
 .pure-menu-heading {
 	padding: 0 1em;
+}
+
+.pure-menu-list {
+	height:100%;
 }
 
 .custom-wrapper {
@@ -74,6 +79,7 @@ body {
 
 .custom-menu-3 {
   text-align: right;
+	height: 100%;
 }
 
 .custom-toggle {
