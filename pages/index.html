@@ -1,143 +1,149 @@
 {% extends "pages/layout.html" %}
 {% block content %}
 		<form action="/" method="POST">
-    	<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="leagueSettings">
-            <h3>League settings</h3>
-            <ul>
-                <li>Teams
-                    <select name="teams">
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option selected="selected">12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                    </select>
-                </li>
-                <li>Auction dollars <input name="payroll" type="text" size="3" value="300"/></li>
-                <li>Minimum salary <input name="min_salary" type="text" size="3" value="1"/></li>
-            </ul>
+			<div class="pure-g">
+				<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="leagueSettings">
+          <h3>League settings</h3>
+          <ul>
+            <li>Teams
+              <select name="teams">
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option selected="selected">12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+              </select>
+            </li>
+            <li>Auction dollars <input name="payroll" type="text" size="3" value="300"/></li>
+            <li>Minimum salary <input name="min_salary" type="text" size="3" value="1"/></li>
+          </ul>
         </div>
 
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="rosterSpots">
-            <h3>Roster spots</h3>
-            <ul>
-                <li>QB
-                    <select name="starting_QBs">
-                        <option selected="selected">1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>RB
-                    <select name="starting_RBs">
-                        <option>1</option>
-                        <option selected="selected">2</option>
-                        <option>3</option>
-                    </select>
-                </li>
-                <li>WR
-                    <select name="starting_WRs">
-                        <option>1</option>
-                        <option selected="selected">2</option>
-                        <option>3</option>
-                    </select>
-                </li>
-                <li>TE
-                    <select name="starting_TEs">
-                        <option selected="selected">1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>WR/RB
-                    <select name="starting_WR_RB">
-                        <option selected="selected">0</option>
-                        <option>1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>WR/TE
-                    <select name="starting_WR_TE">
-                        <option selected="selected">0</option>
-                        <option>1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>WR/RB/TE
-                    <select name="starting_WR_RB_TE">
-                        <option selected="selected">0</option>
-                        <option>1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>K
-                    <select name="starting_Ks">
-                        <option selected="selected">1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>DEF/ST
-                    <select name="starting_DEFSTs">
-                        <option selected="selected">1</option>
-                        <option>2</option>
-                    </select>
-                </li>
-                <li>Bench spots
-                    <select name="bench_spots">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option selected="selected">6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
-                </li>
-            </ul>
+          <h3>Roster spots</h3>
+          <ul>
+            <li>QB
+              <select name="starting_QBs">
+                <option selected="selected">1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>RB
+              <select name="starting_RBs">
+                <option>1</option>
+                <option selected="selected">2</option>
+                <option>3</option>
+              </select>
+            </li>
+            <li>WR
+              <select name="starting_WRs">
+                <option>1</option>
+                <option selected="selected">2</option>
+                <option>3</option>
+              </select>
+            </li>
+            <li>TE
+              <select name="starting_TEs">
+                <option selected="selected">1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>WR/RB
+              <select name="starting_WR_RB">
+                <option selected="selected">0</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>WR/TE
+              <select name="starting_WR_TE">
+                <option selected="selected">0</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>WR/RB/TE
+              <select name="starting_WR_RB_TE">
+                <option selected="selected">0</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>K
+              <select name="starting_Ks">
+                <option selected="selected">1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>DEF/ST
+              <select name="starting_DEFSTs">
+                <option selected="selected">1</option>
+                <option>2</option>
+              </select>
+            </li>
+            <li>Bench spots
+              <select name="bench_spots">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option selected="selected">6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+              </select>
+            </li>
+          </ul>
         </div>
 
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="pointSettings">
-            <h3>Point settings</h3>
-            <ul>
-                <li>Pass yards per point <input name="pass_yd_pp" type="text" size="2" value="25"/></li>
-                <li>Pass TD <input name="pp_pass_TD" type="text" size="2" value="4"/></li>
-                <li>Rush yards per point <input name="rush_yd_pp" type="text" size="2" value="10"/></li>
-                <li>Rush TD <input name="pp_rush_TD" type="text" size="2" value="6"/></li>
-                <li>Receiving yards per point <input name="rec_yd_pp" type="text" size="2" value="10"/></li>
-                <li>Points per reception <input name="ppr" type="text" size="2" value="0"/></li>
-                <li>Receiving TD <input name="pp_rec_TD" type="text" size="2" value="6"/></li>
-                <li>INT <input name="pp_INT" type="text" size="2" value="-2"/></li>
-                <li>Fumble <input name="pp_fum" type="text" size="2" value="-2"/></li>
-                <li>Made FG <input name="pp_made_FG" type="text" size="2" value="3"/></li>
-                <li>Missed FG <input name="pp_missed_FG" type="text" size="2" value="0"/></li>
-                <li>Made XP <input name="pp_made_XP" type="text" size="2" value="1"/></li>
-                <li>Missed XP <input name="pp_missed_XP" type="text" size="2" value="0"/></li>
-                <li>INT (Defense/ST) <input name="DEFpp_INT" type="text" size="2" value="2"/></li>
-                <li>FF (Defense/ST) <input name="DEFpp_ff" type="text" size="2" value="0"/></li>
-                <li>FR (Defense/ST) <input name="DEFpp_fr" type="text" size="2" value="2"/></li>
-                <li>Sack (Defense/ST) <input name="DEFpp_sack" type="text" size="2" value="1"/></li>
-                <li>TD (Defense/ST) <input name="DEFpp_TD" type="text" size="2" value="6"/></li>
-                <li>Safety (Defense/ST) <input name="DEFpp_safety" type="text" size="2" value="2"/></li>
-                <li>Allowing 0 points (Defense) <input name="DEFpa_0" type="text" size="2" value="10"/></li>
-                <li>Allowing less than 7 points (Defense) <input name="DEFpa_lt_7" type="text" size="2" value="7"/></li>
-                <li>Allowing less than 14 points (Defense) <input name="DEFpa_lt_14" type="text" size="2" value="4"/></li>
-                <li>Allowing less than 21 points (Defense) <input name="DEFpa_lt_21" type="text" size="2" value="1"/></li>
-                <li>Allowing less than 28 points (Defense) <input name="DEFpa_lt_28" type="text" size="2" value="0"/></li>
-                <li>Allowing less than 35 points (Defense) <input name="DEFpa_lt_35" type="text" size="2" value="-1"/></li>
-                <li>Allowing more than 35 points (Defense) <input name="DEFpa_gt_35" type="text" size="2" value="-4"/></li>
-            </ul>
-            <button class="pure-button pure-button-primary" type="submit">Get results</button>
-        </div>
-        </form>
-        <script>
+          <h3>Point settings</h3>
+          <ul>
+            <li>Pass yards per point <input name="pass_yd_pp" type="text" size="2" value="25"/></li>
+            <li>Pass TD <input name="pp_pass_TD" type="text" size="2" value="4"/></li>
+            <li>Rush yards per point <input name="rush_yd_pp" type="text" size="2" value="10"/></li>
+            <li>Rush TD <input name="pp_rush_TD" type="text" size="2" value="6"/></li>
+            <li>Receiving yards per point <input name="rec_yd_pp" type="text" size="2" value="10"/></li>
+            <li>Points per reception <input name="ppr" type="text" size="2" value="0"/></li>
+            <li>Receiving TD <input name="pp_rec_TD" type="text" size="2" value="6"/></li>
+            <li>INT <input name="pp_INT" type="text" size="2" value="-2"/></li>
+            <li>Fumble <input name="pp_fum" type="text" size="2" value="-2"/></li>
+            <li>Made FG <input name="pp_made_FG" type="text" size="2" value="3"/></li>
+            <li>Missed FG <input name="pp_missed_FG" type="text" size="2" value="0"/></li>
+            <li>Made XP <input name="pp_made_XP" type="text" size="2" value="1"/></li>
+            <li>Missed XP <input name="pp_missed_XP" type="text" size="2" value="0"/></li>
+            <li>INT (Defense/ST) <input name="DEFpp_INT" type="text" size="2" value="2"/></li>
+            <li>FF (Defense/ST) <input name="DEFpp_ff" type="text" size="2" value="0"/></li>
+            <li>FR (Defense/ST) <input name="DEFpp_fr" type="text" size="2" value="2"/></li>
+            <li>Sack (Defense/ST) <input name="DEFpp_sack" type="text" size="2" value="1"/></li>
+            <li>TD (Defense/ST) <input name="DEFpp_TD" type="text" size="2" value="6"/></li>
+            <li>Safety (Defense/ST) <input name="DEFpp_safety" type="text" size="2" value="2"/></li>
+            <li>Allowing 0 points (Defense) <input name="DEFpa_0" type="text" size="2" value="10"/></li>
+            <li>Allowing less than 7 points (Defense) <input name="DEFpa_lt_7" type="text" size="2" value="7"/></li>
+            <li>Allowing less than 14 points (Defense) <input name="DEFpa_lt_14" type="text" size="2" value="4"/></li>
+            <li>Allowing less than 21 points (Defense) <input name="DEFpa_lt_21" type="text" size="2" value="1"/></li>
+            <li>Allowing less than 28 points (Defense) <input name="DEFpa_lt_28" type="text" size="2" value="0"/></li>
+            <li>Allowing less than 35 points (Defense) <input name="DEFpa_lt_35" type="text" size="2" value="-1"/></li>
+            <li>Allowing more than 35 points (Defense) <input name="DEFpa_gt_35" type="text" size="2" value="-4"/></li>
+          </ul>
+	      </div>
+
+				<div class="pure-u-1 buttonContainer">
+					<button class="pure-button pure-button-primary" type="submit">Get results</button>
+				</div>
+
+			</div>
+    </form>
+    <script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
