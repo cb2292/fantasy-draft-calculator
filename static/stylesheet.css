@@ -3,7 +3,7 @@
 
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
-	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 p, li, h1, h2, h3, h4, h5, h6 {
@@ -179,12 +179,17 @@ body {
 	padding:1em;
 }
 
+#leftContainer ul {
+	padding-left: 1em;
+}
+
 #leftContainer ul li {
 	font-size:14px;
 	list-style:none;
+	margin-bottom: 0.25em;
 }
 
-#buttonContainer {
+.buttonContainer {
 	text-align: center;
 }
 
@@ -194,7 +199,7 @@ body {
 }
 
 #rightContainer {
-	padding:1em;
+	padding:1em 1em 1em 0;
 	text-align: center;
 }
 
