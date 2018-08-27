@@ -1,9 +1,9 @@
 // JavaScript Document
 
 $(document).ready(function() {
-	$(".hidden").hide();
+	$(".ishidden").hide();
 	$(".faq_link").click(function() {
-		if ($(this).parent().next().hasClass("hidden") === true)	{
+		if ($(this).parent().next().hasClass("ishidden") === true)	{
 			$(this).parent().next().show();
 		}
 		else	{

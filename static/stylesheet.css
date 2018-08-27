@@ -80,7 +80,7 @@ body {
 }
 
 .custom-wrapper.open {
-  height: 14em;
+  height: 280px;
 }
 
 .custom-menu-3 {
@@ -184,6 +184,10 @@ body {
 	list-style:none;
 }
 
+#buttonContainer {
+	text-align: center;
+}
+
 .pure-button-primary {
 	background-color: #13AD3C;
 	margin: 0 auto;
@@ -191,18 +195,15 @@ body {
 
 #rightContainer {
 	padding:1em;
+	text-align: center;
 }
 
-@media (max-width: 47.999em) {
+@media (min-width: 48em) {
 
 	#rightContainer {
 		border-left:solid 1px #EBEBEB;
 	}
 
-}
-
-#adContainer {
-	margin: 0 auto;
 }
 
 .faq li h3 {
