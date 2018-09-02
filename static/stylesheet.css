@@ -63,8 +63,7 @@ body {
 }
 
 .pure-menu-link {
-	margin-top: 1px;
-	padding: 1.5em 1em;
+	padding: 25px 16px 26px 16px;
 }
 
 .custom-wrapper {
@@ -149,7 +148,7 @@ body {
 	background: url(logo_grey.png);
 	background-size:cover;
 	height:60px;
-	width:205px;
+	width:169px;
 	margin-top:5px;
 	list-style:none;
 }
