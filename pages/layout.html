@@ -1,73 +1,155 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="Free Fantasy Football Calculator">
-<meta name="keywords" content="fantasy football, fantasy, football, calculator, free, auction, draft, players, dollars">
-<title>Free Fantasy Football Calculator</title>
-<link type="text/css" rel="stylesheet" href="/static/stylesheet.css"/>
-<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" src="/static/script.js"></script>
-<!--fb-->
-<meta property="og:type"             content="website" />
-<meta property="og:title"            content="Free Fantasy Football Draft Calulator" />
-<meta property="og:description"      content="Free Fantasy Football Draft Calulator" />
-<meta property="og:image"            content="http://www.freefantasycalculator.com/../static/fb-field.jpg" />
-<meta property="og:image:type"       content="image/jpeg" />
-<meta property="og:image:width"      content="3651" />
-<meta property="og:image:height"     content="2737" />
-<!--twtr-->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Fantasy Football Draft Calculator">
-<meta name="twitter:description" content="Free Fantasy Football Draft Calculator">
-<meta name="twitter:image" content="http://www.freefantasycalculator.com/../static/fb-field.jpg">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Free Fantasy Football Calculator">
+  <meta name="keywords" content="fantasy football, fantasy, football, calculator, free, auction, draft, players, dollars">
+  <title>Free Fantasy Football Calculator</title>
+  <!--Pure framework-->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link type="text/css" rel="stylesheet" href="/static/stylesheet.css"/>
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/script.js"></script>
+
+  <!--fb-->
+  <meta property="og:type"             content="website" />
+  <meta property="og:title"            content="Free Fantasy Football Draft Calculator" />
+  <meta property="og:description"      content="Free Fantasy Football Draft Calculator" />
+  <meta property="og:image"            content="http://www.freefantasycalculator.com/../static/fb-field.jpg" />
+  <meta property="og:image:type"       content="image/jpeg" />
+  <meta property="og:image:width"      content="3651" />
+  <meta property="og:image:height"     content="2737" />
+  <!--twtr-->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Fantasy Football Draft Calculator">
+  <meta name="twitter:description" content="Free Fantasy Football Draft Calculator">
+  <meta name="twitter:image" content="http://www.freefantasycalculator.com/../static/fb-field.jpg">
 </head>
 
 <body>
-<div id="backgroundHeader"></div>
-<div id="container">
-    <div id="header">
-    	<div id="logo"></div>
-    	<ul id="nav">
-            <li><a href="mailto:contact@freefantasycalculator.com">Contact</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/">Home</a></li>
-        </ul>
+  <div class="full white">
+    <div class="custom-wrapper pure-g" id="menu">
+      <div class="pure-u-1 pure-u-md-1-3">
+        <div class="pure-menu">
+          <a href="/" class="pure-menu-heading custom-brand"><div id="logo"></div></a>
+          <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+        </div>
+      </div>
+      <div class="pure-u-1 pure-u-md-2-3">
+        <div class="pure-menu pure-menu-horizontal custom-menu-3 custom-can-transform">
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="/faq" class="pure-menu-link">FAQ</a></li>
+            <li class="pure-menu-item"><a href="mailto:contact@freefantasycalculator.com" class="pure-menu-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <!--Menu toggle-->
+    <script>
+      (function (window, document) {
+      var menu = document.getElementById('menu'),
+        WINDOW_CHANGE_EVENT = ('onorientationchange' in window) ? 'orientationchange':'resize';
 
-    <div id="topContainer">
-    	<h3>The <b>Free Fantasy Football Draft Calculator</b> is a tool to help you in your fantasy football draft.</h3>
-        <h4>We take the settings of your league and projections of player stats, and give you the values you should pay for each player in an auction draft (or the order you should draft players in a <a href="/faq#q4">snake draft</a>). Just put your league settings below and click Submit!</h4>
-	<h4><b>Last updated:</b> 8/18/2018</h4>
-    </div>
+      function toggleHorizontal() {
+        [].forEach.call(
+          document.getElementById('menu').querySelectorAll('.custom-can-transform'),
+          function(el){
+            el.classList.toggle('pure-menu-horizontal');
+          }
+        );
+      };
 
-    <div id="leftContainer">
-    	{% block content %} {% endblock %}
-    </div>
+      function toggleMenu() {
+        // set timeout so that the panel has a chance to roll up
+        // before the menu switches states
+        if (menu.classList.contains('open')) {
+          setTimeout(toggleHorizontal, 500);
+        }
+        else {
+          toggleHorizontal();
+        }
+        menu.classList.toggle('open');
+        document.getElementById('toggle').classList.toggle('x');
+      };
 
-    <div id="rightContainer">
-        <script type="text/javascript"><!--
-		google_ad_client = "ca-pub-3125447556147123";
-		/* FFB Calculator */
-		google_ad_slot = "8331480282";
-		google_ad_width = 300;
-		google_ad_height = 600;
-		//-->
-		</script>
-		<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
-    </div>
+      function closeMenu() {
+        if (menu.classList.contains('open')) {
+          toggleMenu();
+        }
+      }
 
-    <div id="footer">
-    	<ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="mailto:contact@freefantasycalculator.com">Feedback / Contact Us</a></li>
-        </ul>
+      document.getElementById('toggle').addEventListener('click', function (e) {
+        toggleMenu();
+        e.preventDefault();
+      });
+
+      window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
+      })(this, this.document);
+
+    </script>
+  </div>
+
+  <div class="spacing"></div>
+
+  <div class="pure-g">
+    <div class="pure-u-1-24"></div>
+    <div class="pure-u-22-24" id="topContainer">
+    	<h3>The <b>Free Fantasy Football Draft Calculator</b> is a tool to help you in your fantasy football draft.</h3><br>
+      <p>We take the settings of your league and projections of player stats, and give you the values you should pay for each player in an auction draft (or the order you should draft players in a <a href="/faq#q4">snake draft</a>). Just put your league settings below and click Submit!</p><br>
+      <h3><b>Last updated:</b> 8/27/2018</h3>
     </div>
-</div>
+    <div class="pure-u-1-24"></div>
+  </div>
+
+  <div class="spacing"></div>
+  <div class="spacing"></div>
+
+  <div class="pure-g">
+    <div class="pure-u-1-24"></div>
+    <div class="pure-u-22-24" id="midContainer">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-3" id="leftContainer">
+        	{% block content %} {% endblock %}
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="rightContainer">
+          <script type="text/javascript"><!--
+        		google_ad_client = "ca-pub-3125447556147123";
+        		/* FFB Calculator */
+        		google_ad_slot = "8331480282";
+        		google_ad_width = 300;
+        		google_ad_height = 600;
+        		//-->
+        	</script>
+      		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      		</script>
+        </div>
+      </div>
+    </div>
+    <div class="pure-u-1-24"></div>
+  </div>
+
+  <div class="spacing"></div>
+
+  <div class="pure-g">
+    <div class="pure-u-1-24"></div>
+    <div class="pure-u-22-24" id="footer">
+      <div class="pure-g">
+      	<div class="pure-u-1 pure-u-md-1-3 footer-item"><a href="/">Home</a></div>
+        <div class="pure-u-1 pure-u-md-1-3 footer-item"><a href="/faq">FAQ</a></div>
+        <div class="pure-u-1 pure-u-md-1-3 footer-item"><a href="mailto:contact@freefantasycalculator.com">Feedback / Contact Us</a></div>
+      </div>
+    </div>
+    <div class="pure-u-1-24"></div>
+  </div>
+
+  <div class="spacing"></div>
+
 </body>
 </html>
