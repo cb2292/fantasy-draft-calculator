@@ -2,7 +2,7 @@
 {% block content %}
 		<form action="/" method="POST">
 			<div class="pure-g">
-				<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="leagueSettings">
+				<div class="pure-u-1 pure-u-sm-1-2 pure-u-xl-1-3" id="leagueSettings">
 					<h3>League settings</h3>
           <ul>
             <li>Teams
@@ -25,7 +25,7 @@
           </ul>
         </div>
 
-        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3" id="rosterSpots">
+        <div class="pure-u-1 pure-u-sm-1-2 pure-u-xl-1-3" id="rosterSpots">
           <h3>Roster spots</h3>
           <ul>
             <li>QB
@@ -105,15 +105,15 @@
           </ul>
         </div>
 
-        <div class="pure-u-1 pure-u-md-1 pure-u-lg-1-3" id="pointSettings">
-          <h3>Point settings</h3>
+        <div class="ppure-u-1 pure-u-sm-1-2 pure-u-xl-1-3" id="OffPointSettings">
+          <h3>Point settings (Off)</h3>
           <ul>
             <li>Pass yds/pt <input name="pass_yd_pp" type="text" size="2" value="25"/></li>
             <li>Pass TD <input name="pp_pass_TD" type="text" size="2" value="4"/></li>
             <li>Rush yds/pt <input name="rush_yd_pp" type="text" size="2" value="10"/></li>
             <li>Rush TD <input name="pp_rush_TD" type="text" size="2" value="6"/></li>
             <li>Receiving yds/pt <input name="rec_yd_pp" type="text" size="2" value="10"/></li>
-            <li>Points per reception <input name="ppr" type="text" size="2" value="0"/></li>
+            <li>Points per rec. <input name="ppr" type="text" size="2" value="0"/></li>
             <li>Receiving TD <input name="pp_rec_TD" type="text" size="2" value="6"/></li>
             <li>INT <input name="pp_INT" type="text" size="2" value="-2"/></li>
             <li>Fumble <input name="pp_fum" type="text" size="2" value="-2"/></li>
@@ -121,21 +121,27 @@
             <li>Missed FG <input name="pp_missed_FG" type="text" size="2" value="0"/></li>
             <li>Made XP <input name="pp_made_XP" type="text" size="2" value="1"/></li>
             <li>Missed XP <input name="pp_missed_XP" type="text" size="2" value="0"/></li>
-            <li>INT (DEF/ST) <input name="DEFpp_INT" type="text" size="2" value="2"/></li>
-            <li>FF (DEF/ST) <input name="DEFpp_ff" type="text" size="2" value="0"/></li>
-            <li>FR (DEF/ST) <input name="DEFpp_fr" type="text" size="2" value="2"/></li>
-            <li>Sack (DEF/ST) <input name="DEFpp_sack" type="text" size="2" value="1"/></li>
-            <li>TD (DEF/ST) <input name="DEFpp_TD" type="text" size="2" value="6"/></li>
-            <li>Safety (DEF/ST) <input name="DEFpp_safety" type="text" size="2" value="2"/></li>
-            <li>Allowing 0 pts (DEF) <input name="DEFpa_0" type="text" size="2" value="10"/></li>
-            <li>Allowing &lt 7 points (DEF) <input name="DEFpa_lt_7" type="text" size="2" value="7"/></li>
-            <li>Allowing &lt 14 points (DEF) <input name="DEFpa_lt_14" type="text" size="2" value="4"/></li>
-            <li>Allowing &lt 21 points (DEF) <input name="DEFpa_lt_21" type="text" size="2" value="1"/></li>
-            <li>Allowing &lt 28 points (DEF) <input name="DEFpa_lt_28" type="text" size="2" value="0"/></li>
-            <li>Allowing &lt 35 points (DEF) <input name="DEFpa_lt_35" type="text" size="2" value="-1"/></li>
-            <li>Allowing &gt 35 points (DEF) <input name="DEFpa_gt_35" type="text" size="2" value="-4"/></li>
           </ul>
 	      </div>
+
+				<div class="pure-u-1 pure-u-sm-1-2 pure-u-xl-1-3" id="DefPointSettings">
+					<h3>Point settings (Def)</h3>
+          <ul>
+						<li>INT <input name="DEFpp_INT" type="text" size="2" value="2"/></li>
+            <li>FF <input name="DEFpp_ff" type="text" size="2" value="0"/></li>
+            <li>FR <input name="DEFpp_fr" type="text" size="2" value="2"/></li>
+            <li>Sack <input name="DEFpp_sack" type="text" size="2" value="1"/></li>
+            <li>TD <input name="DEFpp_TD" type="text" size="2" value="6"/></li>
+            <li>Safety <input name="DEFpp_safety" type="text" size="2" value="2"/></li>
+            <li>Allowing 0 pts <input name="DEFpa_0" type="text" size="2" value="10"/></li>
+            <li>Allowing &lt 7 pts <input name="DEFpa_lt_7" type="text" size="2" value="7"/></li>
+            <li>Allowing &lt 14 pts <input name="DEFpa_lt_14" type="text" size="2" value="4"/></li>
+            <li>Allowing &lt 21 pts <input name="DEFpa_lt_21" type="text" size="2" value="1"/></li>
+            <li>Allowing &lt 28 pts <input name="DEFpa_lt_28" type="text" size="2" value="0"/></li>
+            <li>Allowing &lt 35 pts <input name="DEFpa_lt_35" type="text" size="2" value="-1"/></li>
+            <li>Allowing &gt 35 pts <input name="DEFpa_gt_35" type="text" size="2" value="-4"/></li>
+					</ul>
+				</div>
 
 				<div class="pure-u-1 buttonContainer">
 					<button class="pure-button pure-button-primary" type="submit">Get results</button>
