@@ -65,14 +65,14 @@ total_players = starting_QBs + starting_RBs + starting_WRs + starting_TEs + star
 starter_player_percent = float(total_starters) / float(total_players)
 total_dollars = teams * payroll
 total_AR_dollars = total_dollars - min_salary * total_players * teams
-starter_AR_dollars = (starter_player_percent + (1-starter_player_percent) * 2/3) * total_AR_dollars 
+starter_AR_dollars = (starter_player_percent + (1-starter_player_percent) * 2/3) * total_AR_dollars
 bench_AR_dollars = total_AR_dollars - starter_AR_dollars
 
 class Index(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('pages/index.html')
         self.response.write(template.render())
-    
+
     def post(self):
         global pass_yd_pp,pp_pass_TD,rush_yd_pp,pp_rush_TD,rec_yd_pp,pp_rec_TD,ppr,pp_INT,pp_fum,pp_made_FG,pp_missed_FG,pp_made_XP,pp_missed_XP,DEFpp_INT,DEFpp_ff,DEFpp_fr,DEFpp_sack,DEFpp_TD,DEFpp_safety,DEFpa_0,DEFpa_lt_7,DEFpa_lt_14,DEFpa_lt_21,DEFpa_lt_28,DEFpa_lt_35,DEFpa_gt_35,starting_QBs,starting_RBs,starting_WRs,starting_TEs,starting_Ks,starting_DEFSTs,starting_WR_RB,starting_WR_TE,starting_WR_RB_TE,bench_spots,teams,payroll,min_salary
         reset_values()
@@ -119,7 +119,7 @@ class Index(webapp2.RequestHandler):
         min_salary = float(self.request.get('min_salary'))
         '''run code to make calculations'''
         adjust_settings()
-        import_player_projections("QB-proj-2018.csv","RB-proj-2018.csv","WR-proj-2018.csv","TE-proj-2018.csv","K-proj-2018.csv","DEFST-proj-2018.csv")
+        import_player_projections("QB-proj-2019.csv","RB-proj-2019.csv","WR-proj-2019.csv","TE-proj-2019.csv","K-proj-2019.csv","DEFST-proj-2019.csv")
         sort_position_lists()
         set_replacement_levels()
         AR_levels()
@@ -159,7 +159,7 @@ def adjust_settings():
     starting_WRs = starting_WRs + starting_WR_RB / 2 + starting_WR_TE * 2/3 + starting_WR_RB_TE * 1/3
     starting_RBs = starting_RBs + starting_WR_RB / 2 + starting_WR_RB_TE * 1/3
     starting_TEs = starting_TEs + starting_WR_TE * 1/3 + starting_WR_RB_TE * 1/3
-    
+
     #calculate position of bench spots, arbitrary guess on proportions
     bench_QBs = bench_spots * 0.15
     bench_RBs = bench_spots * 0.35
@@ -175,13 +175,13 @@ def adjust_settings():
     total_dollars = teams * payroll
     total_AR_dollars = total_dollars - min_salary * total_players * teams
     #allocate majority of dollars to starters, scaled by the proportion of roster they take up
-    starter_AR_dollars = (starter_player_percent + (1-starter_player_percent) * 3/4) * total_AR_dollars 
+    starter_AR_dollars = (starter_player_percent + (1-starter_player_percent) * 3/4) * total_AR_dollars
     bench_AR_dollars = total_AR_dollars - starter_AR_dollars
     print "adjust settings has been run"
 
 '''create classes to hold stats for each player;
    different positions get different objects since they have different stats'''
-   
+
 class Player(object):
     fantasy_pts = 0
     PAR = 0 #points above replacement, placeholder
@@ -192,7 +192,7 @@ class Player(object):
     def __init__(self,position,name):
         self.position = position
         self.name = name
-        
+
     def assign_PAR(self):
         if self.position == "QB":
             self.PAR = ( self.fantasy_pts - QB_RL ) * 1
@@ -208,7 +208,7 @@ class Player(object):
             self.PAR = ( self.fantasy_pts - DEFST_RL ) * 0.4
         else:
             print("Error in assigning PAR")
-    
+
     def assign_dollar_value(self):
         if self.starter:
             self.dollar_value = int( self.PAR / total_starter_PAR * starter_AR_dollars + min_salary )
@@ -253,7 +253,7 @@ class WR(Player):
         self.rec = rec
         self.fumbles = fumbles
         self.fantasy_pts = round(self.rec_yds/rec_yd_pp + self.rec_TD*pp_rec_TD + self.rec*ppr + self.fumbles*pp_fum,2)
-    
+
 class TE(Player):
     '''makes a TE object to hold stats'''
     def __init__(self,name,rec,rec_yds,rec_TD,fumbles):
@@ -275,7 +275,7 @@ class K(Player):
         self.made_XP = made_XP
         self.missed_XP = XPA - made_XP
         self.fantasy_pts = round(self.made_FG*pp_made_FG + self.missed_FG*pp_missed_FG + self.made_XP*pp_made_XP + self.missed_XP*pp_missed_XP,2)
-    
+
 class DEFST(Player):
     '''makes a DEF/ST object to hold stats'''
     def __init__(self,name,INTs,FR,FF,sacks,TDs,safeties,PA):
@@ -302,10 +302,10 @@ class DEFST(Player):
         else:
             self.PA = DEFpa_gt_35
         self.fantasy_pts = round(self.INTs*DEFpp_INT + self.FR*DEFpp_fr + self.FF*DEFpp_ff + self.sacks*DEFpp_sack + self.TDs*DEFpp_TD + self.safeties*DEFpp_safety + self.PA*16,2)
-    
-'''import projected stats from .csv files and calculate 
+
+'''import projected stats from .csv files and calculate
    fantasy points for each player/object'''
-        
+
 # initialize variables that use player objects
 QBs = []
 RBs = []
@@ -333,7 +333,7 @@ def import_player_projections(QB_data,RB_data,WR_data,TE_data,K_data,DEFST_data)
                 print("Skipping first line in QB datasheet")
             else: #def __init__(self,name,pass_yds,pass_TD,INTs,rush_yds,rush_TD,fumbles):
                 QBs.append(QB(stats[0],float(stats[4]),float(stats[5]),float(stats[6]),float(stats[10]),float(stats[12]),float(stats[13])))
-    
+
     '''get RB projections into RB objects'''
     with open(RB_data,'r') as f:
         for line in f:
@@ -342,7 +342,7 @@ def import_player_projections(QB_data,RB_data,WR_data,TE_data,K_data,DEFST_data)
                 print("Skipping first line in RB datasheet")
             else: #def __init__(self,name,rush_yds,rush_TD,rec,rec_yds,rec_TD,fumbles):
                 RBs.append(RB(stats[0],float(stats[3]),float(stats[5]),float(stats[6]),float(stats[7]),float(stats[9]),float(stats[10])))
-    
+
     '''get WR projections into WR objects'''
     with open(WR_data,'r') as f:
         for line in f:
@@ -351,7 +351,7 @@ def import_player_projections(QB_data,RB_data,WR_data,TE_data,K_data,DEFST_data)
                 print("Skipping first line in WR datasheet")
             else: #def __init__(self,name,rec,rec_yds,rec_TD,fumbles):
                 WRs.append(WR(stats[0],float(stats[2]),float(stats[3]),float(stats[5]),float(stats[6])))
-    
+
     '''get TE projections into TE objects'''
     with open(TE_data,'r') as f:
         for line in f:
@@ -360,7 +360,7 @@ def import_player_projections(QB_data,RB_data,WR_data,TE_data,K_data,DEFST_data)
                 print("Skipping first line in TE datasheet")
             else: #def __init__(self,name,rec,rec_yds,rec_TD,fumbles):
                 TEs.append(TE(stats[0],float(stats[2]),float(stats[3]),float(stats[5]),float(stats[6])))
-    
+
     '''get K projections into K objects'''
     with open(K_data,'r') as f:
         for line in f:
@@ -369,7 +369,7 @@ def import_player_projections(QB_data,RB_data,WR_data,TE_data,K_data,DEFST_data)
                 print("Skipping first line in K datasheet")
             else: #def __init__(self,name,made_FG,FGA,made_XP,XPA):
                 Ks.append(K(stats[0],float(stats[2]),float(stats[3]),float(stats[4]),float(stats[4])*1.02)) # assume 2% of XPA missed
-    
+
     '''get DEF/ST projections into DEFST objects'''
     with open(DEFST_data,'r') as f:
         for line in f:
@@ -390,7 +390,7 @@ def sort_position_lists():
     Ks = sorted(Ks, key=attrgetter('fantasy_pts'), reverse=True)
     DEFSTs = sorted(DEFSTs, key=attrgetter('fantasy_pts'), reverse=True)
     print "sort position lists has been run"
-    
+
 def set_replacement_levels():
     '''get replacement level for each position, in fantasy points'''
     global QB_RL,RB_RL,WR_RL,TE_RL,K_RL,DEFST_RL
